@@ -7,8 +7,8 @@ import React, { useEffect } from "react";
 import "./Screen.css";
 
 function Screen() {
-  const { vote, setVote } = useVote();
-  const totalVotes = vote.reduce((first, second) => first + second.vote, 0);
+  const { setVote } = useVote();
+
   useEffect(() => {
     connectSocket();
 
@@ -19,15 +19,11 @@ function Screen() {
 
   return (
     <div className="displayScreen">
-      {totalVotes === 0 ? (
-        <div className="loading">Loading Votes...</div>
-      ) : (
-        <div className="mainPage">
-          <Results></Results>
-          <TotalPanel></TotalPanel>
-          <Vote></Vote>
-        </div>
-      )}
+      <div className="mainPage">
+        <Results></Results>
+        <TotalPanel></TotalPanel>
+        <Vote></Vote>
+      </div>
     </div>
   );
 }
